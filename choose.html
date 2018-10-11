@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>多选</title>
+		<style type="text/css">
+			span {
+				padding: 10px 20px;
+				border: 1px solid lightgray;
+				box-shadow: 1px 1px 2px lightgray;
+			}
+			
+			.red,
+			.yellow,
+			.green {
+				color: white;
+				font-weight: bold;
+			}
+			
+			.red {
+				background: red;
+			}
+			
+			.yellow {
+				background: yellow;
+			}
+			
+			.green {
+				background: green;
+			}
+		</style>
+		<script src="jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="">
+			<span class="red">红</span>
+			<span>黄</span>
+			<span>绿</span>
+		</div>
+		
+		<button style="margin-top: 100px;">开</button>
+	</body>
+	<script type="text/javascript">
+		var onOff = 1;
+		$('span').on("click", function() {
+			if($(this).attr("class") == null || $(this).attr("class") == "" || $(this).attr("class") == undefined) {
+				onOff++;
+				if($(this).text() == "红") {
+					$(this).attr("class", "red")
+				} else if($(this).text() == "黄") {
+					$(this).attr("class", "yellow")
+				} else if($(this).text() == "绿") {
+					$(this).attr("class", "green")
+				}
+			} else {
+				if(onOff > 1) {
+					$(this).removeClass();
+					onOff--;
+				}
+			}
+		})
+		
+		
+		
+		$("button").on('click',function(){
+			if(onOff==1){
+				$(this).text("关");
+				onOff=0;
+			}else{
+				$(this).text("开");
+				onOff=1;
+				
+			}
+		})
+	</script>
+
+</html>
